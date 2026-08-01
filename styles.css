@@ -1,56 +1,33 @@
 /* ==========================================================================
-   Odin Yoga — Зеленая Неоновая Стилизация
-   Мгновенное переключение на Бургер-кнопку при любых сужениях страницы (< 1024px)
+   Odin Yoga — Полностью исправленная навигация
+   ДЕСКТОП (≥ 1025px): логотип слева от центра, ссылки по обе стороны
+   МОБИЛЬНАЯ (< 1025px): только логотип по центру + бургер справа
    ========================================================================== */
 
 :root {
     --bg-dark: #040906;
     --bg-surface: #09130D;
-    --bg-card: rgba(16, 185, 129, 0.05);
     --border-card: rgba(52, 211, 153, 0.28);
-    
     --accent-emerald: #10B981;
     --accent-mint: #34D399;
     --accent-glow: rgba(52, 211, 153, 0.3);
     --accent-glow-strong: rgba(16, 185, 129, 0.5);
-
     --text-primary: #FFFFFF;
-    --text-secondary: #A7F3D0;
     --text-muted: rgba(255, 255, 255, 0.75);
-
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Montserrat', sans-serif;
-
     --radius-lg: 24px;
     --radius-md: 16px;
     --radius-pill: 9999px;
-    
-    --ease-out-fast: cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-smooth: transform 0.28s var(--ease-out-fast), opacity 0.28s var(--ease-out-fast), box-shadow 0.28s var(--ease-out-fast), background-color 0.28s var(--ease-out-fast), border-color 0.28s var(--ease-out-fast);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --tr: transform 0.28s var(--ease), opacity 0.28s var(--ease), box-shadow 0.28s var(--ease), background-color 0.28s var(--ease), border-color 0.28s var(--ease);
 }
 
-/* Сброс базовых стилей */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-html {
-    scroll-behavior: smooth;
-}
-
-/* Глобальный градиент: Зеленый сверху -> Черный внизу */
 body {
-    background: linear-gradient(
-        180deg, 
-        #0a2216 0%, 
-        #071910 20%, 
-        #05110b 45%, 
-        #030705 75%, 
-        #000000 100%
-    );
-    background-attachment: scroll;
+    background: linear-gradient(180deg, #0a2216 0%, #071910 20%, #05110b 45%, #030705 75%, #000000 100%);
     color: var(--text-primary);
     font-family: var(--font-body);
     line-height: 1.6;
@@ -65,68 +42,36 @@ body {
     padding: 0 24px;
 }
 
-:focus-visible {
-    outline: 2px solid var(--accent-mint);
-    outline-offset: 4px;
-}
-
 /* ==========================================================================
-   Полноэкранная Компьютерная версия (Десктоп ≥ 1025px)
+   HEADER — Общая база
    ========================================================================== */
 .header {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
     z-index: 100;
-    background: transparent;
-    border-bottom: none;
 }
 
+/* ДЕСКТОП: три колонки — левые ссылки | логотип | правые ссылки */
 .header-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
     height: 80px;
 }
 
-.desktop-nav {
-    display: flex;
-    gap: 36px;
-}
-
-.nav-link {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 300;
-    letter-spacing: 1.8px;
-    padding: 8px 4px;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    transition: var(--transition-smooth);
-}
-
-.nav-link:hover {
-    color: var(--accent-mint);
-    text-shadow: 0 0 15px var(--accent-glow);
-}
-
-/* Логотип Odin Yoga */
+/* Логотип по центру (средняя колонка грида) */
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
     text-decoration: none;
     color: var(--text-primary);
-    min-height: 44px;
+    justify-content: center;
 }
 
 .logo-icon {
-    width: 24px;
-    height: 24px;
+    width: 24px; height: 24px;
     color: var(--accent-mint);
     filter: drop-shadow(0 0 8px var(--accent-emerald));
 }
@@ -136,22 +81,104 @@ body {
     font-size: 1.15rem;
     font-weight: 500;
     letter-spacing: 3.5px;
-    color: rgba(255, 255, 255, 0.95);
+    color: rgba(255,255,255,0.95);
     text-shadow: 0 0 12px var(--accent-glow);
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
-/* На широкоформатном ПК бургер полностью скрыт */
+/* Левые ссылки (первая колонка) */
+.nav-left {
+    display: flex;
+    gap: 32px;
+    justify-content: flex-end;
+    padding-right: 40px;
+}
+
+/* Правые ссылки (третья колонка) */
+.nav-right {
+    display: flex;
+    gap: 32px;
+    justify-content: flex-start;
+    padding-left: 40px;
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 1.6px;
+    white-space: nowrap;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--accent-mint);
+    text-shadow: 0 0 14px var(--accent-glow);
+}
+
+/* Бургер-кнопка — скрыта на десктопе */
 .burger-btn {
-    display: none !important;
+    display: none;
 }
 
+/* Мобильное выпадающее меню — скрыто */
 .mobile-nav-drawer {
-    display: none !important;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: rgba(6, 18, 11, 0.97);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(52, 211, 153, 0.2);
+    padding: 8px 0;
+    z-index: 200;
+    /* Скрыто по умолчанию с анимацией */
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
 }
+
+.mobile-nav-drawer.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.mobile-nav-drawer .nav-link {
+    display: block;
+    padding: 14px 24px;
+    font-size: 0.95rem;
+    letter-spacing: 1.8px;
+    border-bottom: 1px solid rgba(52, 211, 153, 0.08);
+}
+
+.mobile-nav-drawer .nav-link:last-child {
+    border-bottom: none;
+}
+
+/* Полоски бургера */
+.burger-bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--accent-mint);
+    border-radius: 2px;
+    transition: transform 0.22s var(--ease), opacity 0.22s var(--ease);
+}
+
+.burger-btn.active .burger-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger-btn.active .burger-bar:nth-child(2) { opacity: 0; }
+.burger-btn.active .burger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ==========================================================================
-   Секция HERO: Первый экран без скролла
+   HERO — Первый экран
    ========================================================================== */
 .hero-fullbleed {
     position: relative;
@@ -159,22 +186,16 @@ body {
     height: 94vh;
     min-height: 520px;
     max-height: 820px;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    left: 50%;
-    right: 50%;
     margin-left: -50vw;
-    margin-right: -50vw;
+    left: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    overflow: hidden;
 }
 
 .hero-img-wrapper {
     position: relative;
-    width: 100%;
-    height: calc(100% - 70px);
+    flex: 1;
     overflow: hidden;
 }
 
@@ -188,18 +209,9 @@ body {
 
 .hero-gradient-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     pointer-events: none;
-    background: linear-gradient(
-        180deg, 
-        rgba(10, 34, 22, 0.35) 0%, 
-        transparent 35%, 
-        rgba(7, 25, 16, 0.3) 75%, 
-        #091e14 100%
-    );
+    background: linear-gradient(180deg, rgba(10,34,22,.35) 0%, transparent 35%, rgba(7,25,16,.3) 75%, #091e14 100%);
 }
 
 .hero-cta-box {
@@ -211,79 +223,62 @@ body {
 }
 
 .btn-neon-pill {
-    background: rgba(16, 185, 129, 0.22);
+    background: rgba(16,185,129,.22);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    color: #FFFFFF;
+    color: #fff;
     font-family: var(--font-body);
     font-size: 1.05rem;
     font-weight: 400;
     padding: 14px 46px;
-    min-height: 48px;
-    border: 1px solid rgba(52, 211, 153, 0.45);
+    border: 1px solid rgba(52,211,153,.45);
     border-radius: var(--radius-pill);
     cursor: pointer;
-    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.25);
-    transition: var(--transition-smooth);
+    box-shadow: 0 4px 20px rgba(16,185,129,.25);
+    transition: var(--tr);
+    white-space: nowrap;
 }
 
 .btn-neon-pill:hover {
-    background: rgba(16, 185, 129, 0.42);
+    background: rgba(16,185,129,.42);
     border-color: var(--accent-mint);
-    box-shadow: 0 6px 25px rgba(52, 211, 153, 0.4);
+    box-shadow: 0 6px 25px rgba(52,211,153,.4);
     transform: translateY(-2px);
 }
 
-.btn-neon-pill:active {
-    transform: translateY(0) scale(0.98);
-}
-
 .hero-quote-inline {
-    width: 100%;
-    padding: 12px 0 16px 0;
+    padding: 14px 0 16px;
     background: #091e14;
     text-align: center;
-    border-bottom: 1px solid rgba(52, 211, 153, 0.1);
+    border-bottom: 1px solid rgba(52,211,153,.1);
+    flex-shrink: 0;
 }
 
 .hero-quote {
-    font-size: clamp(0.95rem, 2vw, 1.12rem);
+    font-size: clamp(.9rem, 2vw, 1.1rem);
     font-weight: 300;
     color: var(--text-primary);
     line-height: 1.6;
-    letter-spacing: 0.4px;
-    opacity: 0.94;
+    opacity: .94;
     max-width: 820px;
     margin: 0 auto;
+    padding: 0 16px;
 }
 
 /* ==========================================================================
-   Общие стили секций
+   СЕКЦИИ
    ========================================================================== */
-.section {
-    padding: 46px 0;
-}
-
-.section-header {
-    margin-bottom: 28px;
-}
-
+.section { padding: 52px 0; }
+.section-header { margin-bottom: 30px; }
 .section-title {
     font-family: var(--font-heading);
     font-size: clamp(1.7rem, 3.5vw, 2.1rem);
     font-weight: 600;
-    color: var(--text-primary);
     margin-bottom: 4px;
 }
-
-.section-subtitle {
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--text-muted);
-}
+.section-subtitle { font-size: .95rem; font-weight: 300; color: var(--text-muted); }
 
 /* ==========================================================================
-   Секция 1: Выбор клиентов (Карточки)
+   КАРТОЧКИ
    ========================================================================== */
 .cards-grid {
     display: grid;
@@ -301,356 +296,165 @@ body {
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    transition: var(--transition-smooth);
+    box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    transition: var(--tr);
 }
 
 .class-card-bg-img {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
+    width: 100%; height: 100%;
     object-fit: cover;
     z-index: 1;
-    transition: transform 0.5s var(--ease-out-fast);
+    transition: transform .5s var(--ease);
 }
 
 .class-card-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: 2;
-    background: linear-gradient(
-        180deg, 
-        rgba(16, 185, 129, 0.25) 0%, 
-        rgba(6, 20, 13, 0.65) 45%, 
-        rgba(4, 9, 6, 0.95) 100%
-    );
-    transition: var(--transition-smooth);
+    background: linear-gradient(180deg, rgba(16,185,129,.25) 0%, rgba(6,20,13,.65) 45%, rgba(4,9,6,.95) 100%);
+    transition: var(--tr);
 }
 
-.class-card:hover {
-    border-color: var(--accent-mint);
-    box-shadow: 0 0 30px rgba(52, 211, 153, 0.32);
-    transform: translateY(-5px);
-}
+.class-card:hover { border-color: var(--accent-mint); box-shadow: 0 0 30px rgba(52,211,153,.32); transform: translateY(-5px); }
+.class-card:hover .class-card-bg-img { transform: scale(1.06); }
+.class-card:hover .class-card-overlay { background: linear-gradient(180deg, rgba(52,211,153,.35) 0%, rgba(6,20,13,.6) 45%, rgba(4,9,6,.92) 100%); }
 
-.class-card:hover .class-card-bg-img {
-    transform: scale(1.06);
-}
-
-.class-card:hover .class-card-overlay {
-    background: linear-gradient(
-        180deg, 
-        rgba(52, 211, 153, 0.35) 0%, 
-        rgba(6, 20, 13, 0.60) 45%, 
-        rgba(4, 9, 6, 0.92) 100%
-    );
-}
-
-.card-header {
-    position: relative;
-    z-index: 3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.88rem;
-}
-
-.card-badge {
-    background: rgba(4, 9, 6, 0.6);
-    backdrop-filter: blur(8px);
-    padding: 4px 12px;
-    border-radius: var(--radius-pill);
-    border: 1px solid rgba(52, 211, 153, 0.3);
-    color: var(--text-primary);
-    font-weight: 300;
-}
-
-.card-category {
-    color: var(--accent-mint);
-    font-weight: 500;
-    text-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
-}
-
-.card-body {
-    position: relative;
-    z-index: 3;
-}
-
-.card-description {
-    font-size: 0.83rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.6;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-}
+.card-header { position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: center; font-size: .88rem; }
+.card-badge { background: rgba(4,9,6,.6); backdrop-filter: blur(8px); padding: 4px 12px; border-radius: var(--radius-pill); border: 1px solid rgba(52,211,153,.3); font-weight: 300; }
+.card-category { color: var(--accent-mint); font-weight: 500; text-shadow: 0 0 10px rgba(52,211,153,.5); }
+.card-body { position: relative; z-index: 3; }
+.card-description { font-size: .83rem; font-weight: 300; color: rgba(255,255,255,.9); line-height: 1.6; text-shadow: 0 2px 4px rgba(0,0,0,.8); }
 
 /* ==========================================================================
-   Секция 2: Почему это полезно? (Неон-шары)
+   КРУЖКИ "ПОЧЕМУ ПОЛЕЗНО?"
    ========================================================================== */
 .circles-overlapping-row {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    position: relative;
     padding: 20px 0;
 }
 
 .benefit-ball {
-    width: 190px;
-    height: 190px;
+    width: 190px; height: 190px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     text-align: center;
     margin-left: -28px;
-    transition: var(--transition-smooth);
     flex-shrink: 0;
+    transition: var(--tr);
 }
-
-.benefit-ball:first-child {
-    margin-left: 0;
-}
+.benefit-ball:first-child { margin-left: 0; }
 
 .ball-filled {
     background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 
-        0 0 30px rgba(16, 185, 129, 0.5),
-        inset 0 0 18px rgba(255, 255, 255, 0.25);
+    border: 1.5px solid rgba(255,255,255,.4);
+    box-shadow: 0 0 30px rgba(16,185,129,.5), inset 0 0 18px rgba(255,255,255,.25);
     z-index: 3;
     padding: 20px;
 }
-
-.ball-filled span {
-    font-family: var(--font-body);
-    font-size: 0.98rem;
-    font-weight: 500;
-    color: #FFFFFF;
-    line-height: 1.35;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.ball-filled:hover {
-    transform: scale(1.07);
-    z-index: 10;
-    box-shadow: 
-        0 0 45px rgba(52, 211, 153, 0.75),
-        inset 0 0 25px rgba(255, 255, 255, 0.35);
-}
+.ball-filled span { font-size: .98rem; font-weight: 500; color: #fff; line-height: 1.35; }
+.ball-filled:hover { transform: scale(1.07); z-index: 10; box-shadow: 0 0 45px rgba(52,211,153,.75), inset 0 0 25px rgba(255,255,255,.35); }
 
 .ball-dark {
     background: #06120b;
-    border: 1.5px solid rgba(52, 211, 153, 0.38);
-    box-shadow: 
-        0 0 22px rgba(4, 9, 6, 0.85),
-        inset 0 0 25px rgba(16, 185, 129, 0.2);
+    border: 1.5px solid rgba(52,211,153,.38);
+    box-shadow: 0 0 22px rgba(4,9,6,.85), inset 0 0 25px rgba(16,185,129,.2);
     z-index: 2;
     padding: 24px;
 }
-
-.neon-silh-icon {
-    width: 76px;
-    height: 76px;
-    stroke: var(--accent-mint);
-    filter: drop-shadow(0 0 9px #10B981);
-    transition: var(--transition-smooth);
-}
-
-.ball-dark:hover {
-    transform: scale(1.07);
-    z-index: 10;
-    border-color: var(--accent-mint);
-    box-shadow: 
-        0 0 35px rgba(52, 211, 153, 0.5),
-        inset 0 0 30px rgba(16, 185, 129, 0.3);
-}
-
-.ball-dark:hover .neon-silh-icon {
-    stroke: #6EE7B7;
-    filter: drop-shadow(0 0 14px #34D399);
-}
+.neon-silh-icon { width: 76px; height: 76px; stroke: var(--accent-mint); filter: drop-shadow(0 0 9px #10B981); transition: var(--tr); }
+.ball-dark:hover { transform: scale(1.07); z-index: 10; border-color: var(--accent-mint); box-shadow: 0 0 35px rgba(52,211,153,.5), inset 0 0 30px rgba(16,185,129,.3); }
+.ball-dark:hover .neon-silh-icon { stroke: #6EE7B7; filter: drop-shadow(0 0 14px #34D399); }
 
 /* ==========================================================================
-   Подвал (Footer)
+   FOOTER + MODAL
    ========================================================================== */
-.footer {
-    padding: 36px 0;
-    background: #000000;
-    border-top: 1px solid rgba(52, 211, 153, 0.12);
-    text-align: center;
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: var(--text-muted);
-}
+.footer { padding: 36px 0; background: #000; border-top: 1px solid rgba(52,211,153,.12); text-align: center; font-size: .85rem; font-weight: 300; color: var(--text-muted); }
 
-/* ==========================================================================
-   Модальное окно
-   ========================================================================== */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.85);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: var(--transition-smooth);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: var(--tr);
 }
-
-.modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal-content {
-    background: #09130D;
-    border: 1.5px solid var(--accent-emerald);
-    border-radius: var(--radius-lg);
-    padding: 38px;
-    width: 100%;
-    max-width: 440px;
-    position: relative;
-    box-shadow: 0 0 45px var(--accent-glow-strong);
-}
-
-.modal-close {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 1.6rem;
-    cursor: pointer;
-    padding: 4px;
-    min-width: 36px;
-    min-height: 36px;
-    line-height: 1;
-}
-
-.modal-close:hover {
-    color: var(--accent-mint);
-}
-
-.modal-title {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: var(--text-primary);
-}
-
-.modal-desc {
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: var(--text-muted);
-    margin-bottom: 24px;
-}
-
-.modal-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.form-input {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(52, 211, 153, 0.3);
-    border-radius: var(--radius-md);
-    padding: 14px 16px;
-    color: #FFF;
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 300;
-    outline: none;
-    transition: var(--transition-smooth);
-}
-
-.form-input:focus {
-    border-color: var(--accent-mint);
-    box-shadow: 0 0 14px var(--accent-glow);
-}
-
-.form-btn {
-    margin-top: 8px;
-    width: 100%;
-}
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
+.modal-content { background: #09130D; border: 1.5px solid var(--accent-emerald); border-radius: var(--radius-lg); padding: 38px; width: 100%; max-width: 440px; position: relative; box-shadow: 0 0 45px var(--accent-glow-strong); }
+.modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-muted); font-size: 1.6rem; cursor: pointer; line-height: 1; }
+.modal-close:hover { color: var(--accent-mint); }
+.modal-title { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 500; margin-bottom: 8px; }
+.modal-desc { font-size: .85rem; font-weight: 300; color: var(--text-muted); margin-bottom: 24px; }
+.modal-form { display: flex; flex-direction: column; gap: 16px; }
+.form-input { background: rgba(255,255,255,.05); border: 1px solid rgba(52,211,153,.3); border-radius: var(--radius-md); padding: 14px 16px; color: #fff; font-family: var(--font-body); font-size: .95rem; font-weight: 300; outline: none; transition: var(--tr); }
+.form-input:focus { border-color: var(--accent-mint); box-shadow: 0 0 14px var(--accent-glow); }
+.form-btn { margin-top: 8px; width: 100%; }
 
 /* ==========================================================================
-   МГНОВЕННОЕ ПЕРЕКЛЮЧЕНИЕ НА БУРГЕР И МОБИЛЬНУЮ ВЕРСИЮ (< 1024px)
+   МОБИЛЬНАЯ ВЕРСИЯ (< 1025px)
+   Ключевое изменение: ПОЛНОСТЬЮ перестраиваем шапку
    ========================================================================== */
-
-/* Как только ширина страницы становится < 1024px (планшеты, ноутбуки, телефоны) */
 @media (max-width: 1024px) {
-    .container {
+    /* Шапка: логотип по центру, бургер строго справа */
+    .header-container {
+        /* Убираем сеточную раскладку, просто flex с центрированием */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 68px;
+        position: relative;
         padding: 0 16px;
     }
 
-    /* МГНОВЕННО СКРЫВАЕМ текстовые ссылки навигации */
-    .desktop-nav {
+    /* Скрываем ВСЕ десктопные ссылки */
+    .nav-left,
+    .nav-right {
         display: none !important;
     }
 
-    /* Включаем строго Бургер-кнопку справа и центрируем логотип */
+    /* Бургер появляется строго справа */
     .burger-btn {
-        display: flex !important;
+        display: flex;
         position: absolute;
         right: 16px;
         top: 50%;
         transform: translateY(-50%);
-        background: rgba(16, 185, 129, 0.15);
+        background: rgba(16,185,129,.15);
         backdrop-filter: blur(8px);
-        border: 1px solid rgba(52, 211, 153, 0.35);
-        border-radius: 12px;
+        border: 1px solid rgba(52,211,153,.35);
+        border-radius: 10px;
         width: 42px;
         height: 42px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 5px;
+        gap: 6px;
         cursor: pointer;
-        z-index: 105;
+        z-index: 201;
     }
 
+    /* Выпадающее меню разрешено показываться */
     .mobile-nav-drawer {
-        display: flex !important;
-        position: absolute;
-        top: 68px;
-        right: 16px;
-        width: calc(100vw - 32px);
+        display: flex;
     }
 
-    .header-container {
-        justify-content: center;
-        position: relative;
-        height: 68px;
-    }
-
+    /* Карточки в 2 колонки */
     .cards-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    /* Контейнер */
+    .container {
+        padding: 0 16px;
+    }
 }
 
-/* 2. На смартфонах (< 768px): Компактный кадр снимка без срезки */
+/* Смартфоны (< 768px): фото без срезки */
 @media (max-width: 768px) {
-    .logo-text {
-        font-size: 1.05rem;
-        letter-spacing: 2px;
-    }
-
     .hero-fullbleed {
         height: auto;
         min-height: 0;
@@ -658,9 +462,9 @@ body {
     }
 
     .hero-img-wrapper {
-        height: 44vh;
-        min-height: 250px;
-        max-height: 380px;
+        height: 46vh;
+        min-height: 240px;
+        max-height: 400px;
         background: #091e14;
     }
 
@@ -671,70 +475,37 @@ body {
 
     .btn-neon-pill {
         padding: 10px 28px;
-        font-size: 0.9rem;
-        min-height: 40px;
+        font-size: .9rem;
     }
 
-    .hero-cta-box {
-        bottom: 12px;
-    }
-
-    .hero-quote-inline {
-        padding: 12px 14px 14px 14px;
-    }
-
-    .hero-quote {
-        font-size: 0.85rem;
-        line-height: 1.5;
-    }
-
-    .section {
-        padding: 32px 0;
-    }
-
-    .section-header {
-        margin-bottom: 18px;
-    }
-
-    .section-title {
-        font-size: 1.4rem;
-    }
+    .section { padding: 32px 0; }
+    .section-title { font-size: 1.35rem; }
 
     .cards-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 14px;
     }
 
-    .class-card {
-        min-height: 340px;
-    }
+    .class-card { min-height: 320px; }
+
+    .hero-quote { font-size: .82rem; }
 }
 
-/* 3. Маленькие экраны (< 640px): Вертикальная цепочка шаров по запросу пользователя */
+/* Очень маленькие (< 640px): кружки вертикально */
 @media (max-width: 640px) {
     .circles-overlapping-row {
         flex-direction: column;
         align-items: center;
-        padding: 12px 0;
     }
 
     .benefit-ball {
-        width: 165px;
-        height: 165px;
+        width: 160px; height: 160px;
         margin-left: 0 !important;
-        margin-top: -32px;
+        margin-top: -28px;
     }
 
-    .benefit-ball:first-child {
-        margin-top: 0;
-    }
+    .benefit-ball:first-child { margin-top: 0; }
 
-    .ball-filled span {
-        font-size: 0.88rem;
-    }
-
-    .neon-silh-icon {
-        width: 62px;
-        height: 62px;
-    }
+    .ball-filled span { font-size: .85rem; }
+    .neon-silh-icon { width: 60px; height: 60px; }
 }
