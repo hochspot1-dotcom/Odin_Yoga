@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEOWMASTE — Студия Йоги</title>
+    <meta name="description" content="Йога-студия MEOWMASTE: гармония, дыхание, укрепление тела и нервной системы.">
+    
+    <!-- Google Fonts: Outfit (Display) + Montserrat (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..700;1,300..700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Навигационная панель поверх главного изображения -->
+    <header class="header">
+        <div class="container header-container">
+            <nav class="nav-left" aria-label="Основная навигация">
+                <a href="#about" class="nav-link">О нас</a>
+                <a href="#schedule" class="nav-link">Расписание</a>
+            </nav>
+            
+            <a href="#" class="logo" aria-label="MEOWMASTE Главная">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path d="M12 3c-1.5 2-4 3.5-7 3.5 0 5.5 3 10.5 7 12.5 4-2 7-7c0-5.5-3-7-7-7z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                <span class="logo-text">MEOWMASTE</span>
+            </a>
+            
+            <nav class="nav-right" aria-label="Дополнительная навигация">
+                <a href="#benefits" class="nav-link">Преимущества</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Секция HERO: Фотография вписана по ширине полностью без срезки текста "YOGA" + Цитата под нижний край первого экрана -->
+        <section class="hero-fullbleed" id="about">
+            <div class="hero-img-wrapper">
+                <img src="images/hero_yoga_full.jpg" alt="MEOWMASTE Yoga" class="hero-fullbleed-img">
+                <div class="hero-gradient-overlay"></div>
+                
+                <!-- Овальная кнопка "Записаться" поверх изображения -->
+                <div class="hero-cta-box">
+                    <button class="btn-neon-pill" id="openModalBtn" aria-haspopup="dialog">Записаться</button>
+                </div>
+            </div>
+
+            <!-- Вдохновляющая цитата прижата к нижнему краю первого экрана (Видна без скролла) -->
+            <div class="hero-quote-inline">
+                <div class="container">
+                    <p class="hero-quote">
+                        Йога – это танец каждой клетки под музыку каждого дыхания, который создает внутреннее спокойствие и гармонию
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция "Выбор клиентов" -->
+        <section class="section section-clients" id="schedule">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Выбор клиентов</h2>
+                    <p class="section-subtitle">Наши клиенты выбирают это</p>
+                </div>
+
+                <div class="cards-grid">
+                    <!-- Карточка 1 -->
+                    <article class="class-card">
+                        <img src="images/card_1_new.jpg" alt="Виньяса Йога" class="class-card-bg-img">
+                        <div class="class-card-overlay"></div>
+                        
+                        <div class="card-header">
+                            <span class="card-badge">1 ч</span>
+                            <span class="card-category">Виньяса Йога</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Активная, динамичная практика Йоги, направленная на укрепление тела и нервной системы. Повышает бодрость, стрессоустойчивость.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Карточка 2 -->
+                    <article class="class-card">
+                        <img src="images/card_2_new.jpg" alt="Виньяса Йога" class="class-card-bg-img">
+                        <div class="class-card-overlay"></div>
+
+                        <div class="card-header">
+                            <span class="card-badge">1 ч</span>
+                            <span class="card-category">Виньяса Йога</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Активная, динамичная практика Йоги, направленная на укрепление тела и нервной системы. Повышает бодрость, стрессоустойчивость.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Карточка 3 -->
+                    <article class="class-card">
+                        <img src="images/card_3_new.jpg" alt="Виньяса Йога" class="class-card-bg-img">
+                        <div class="class-card-overlay"></div>
+
+                        <div class="card-header">
+                            <span class="card-badge">1 ч</span>
+                            <span class="card-category">Виньяса Йога</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Активная, динамичная практика Йоги, направленная на укрепление тела и нервной системы. Повышает бодрость, стрессоустойчивость.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Карточка 4 -->
+                    <article class="class-card">
+                        <img src="images/card_4_final.jpg" alt="Виньяса Йога - Бакасана" class="class-card-bg-img">
+                        <div class="class-card-overlay"></div>
+
+                        <div class="card-header">
+                            <span class="card-badge">1 ч</span>
+                            <span class="card-category">Виньяса Йога</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Активная, динамичная практика Йоги, направленная на укрепление тела и нервной системы. Повышает бодрость, стрессоустойчивость.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция "Почему это полезно?" -->
+        <section class="section section-benefits" id="benefits">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Почему это полезно?</h2>
+                    <p class="section-subtitle">Йога – не просто фитнес</p>
+                </div>
+
+                <div class="circles-overlapping-row">
+                    <!-- 1. Яркий залитый круг с текстом -->
+                    <div class="benefit-ball ball-filled">
+                        <span>Внутренняя<br>гармония</span>
+                    </div>
+
+                    <!-- 2. Темный круг с мужским силуэтом медитации -->
+                    <div class="benefit-ball ball-dark" aria-label="Мужская медитация">
+                        <svg viewBox="0 0 100 100" class="neon-silh-icon" aria-hidden="true">
+                            <circle cx="50" cy="22" r="7" fill="none" stroke="#34D399" stroke-width="2.5"/>
+                            <path d="M46 16c2-2 6-2 8 0" stroke="#34D399" stroke-width="2" fill="none"/>
+                            <path d="M50 30v16 M32 38c5-4 13-6 18-6s13 2 18 6" stroke="#34D399" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <path d="M32 38l-10 14 16 8 M68 38l10 14-16 8" stroke="#34D399" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                            <path d="M22 60c8 8 20 12 28 12s20-4 28-12 M26 70c12 4 36 4 48 0" stroke="#34D399" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <!-- 3. Яркий залитый круг с текстом -->
+                    <div class="benefit-ball ball-filled">
+                        <span>Снятие стресса<br>и тревожности</span>
+                    </div>
+
+                    <!-- 4. Темный круг с мужским силуэтом стойки воина -->
+                    <div class="benefit-ball ball-dark" aria-label="Мужская асана силы">
+                        <svg viewBox="0 0 100 100" class="neon-silh-icon" aria-hidden="true">
+                            <circle cx="50" cy="18" r="6.5" fill="none" stroke="#34D399" stroke-width="2.5"/>
+                            <path d="M20 34h60 M50 25v22" stroke="#34D399" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <path d="M42 47h16 M45 47v15 M55 47v15" stroke="#34D399" stroke-width="2.2" fill="none"/>
+                            <path d="M50 62l-18 24 M50 62l22 24" stroke="#34D399" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <!-- 5. Яркий залитый круг с текстом -->
+                    <div class="benefit-ball ball-filled">
+                        <span>Развитие<br>гибкости</span>
+                    </div>
+
+                    <!-- 6. Темный круг с неоновым котом -->
+                    <div class="benefit-ball ball-dark" aria-label="Грация и кошка">
+                        <svg viewBox="0 0 100 100" class="neon-silh-icon" aria-hidden="true">
+                            <path d="M20 72c10-2 22-12 25-24 2-8 0-18 6-22 5-3 12 1 14 7 2 6-2 13-2 19 0 8 8 16 17 18 M75 35c3-6 8-8 12-5 M32 45c-8-12-8-25-3-32" stroke="#34D399" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer" id="contacts">
+        <div class="container footer-container">
+            <p>© 2026 MEOWMASTE Yoga Studio. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно записи -->
+    <div class="modal-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn" aria-label="Закрыть модальное окно">&times;</button>
+            <h3 class="modal-title" id="modalTitle">Запись на занятие</h3>
+            <p class="modal-desc">Оставьте ваши данные, и мы свяжемся с вами для уточнения деталей.</p>
+            <form class="modal-form" onsubmit="event.preventDefault(); alert('Спасибо! Заявка принята.');">
+                <input type="text" placeholder="Ваше имя" required class="form-input" aria-label="Ваше имя">
+                <input type="tel" placeholder="Телефон" required class="form-input" aria-label="Ваш телефон">
+                <button type="submit" class="btn-neon-pill form-btn">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
