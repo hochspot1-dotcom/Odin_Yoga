@@ -220,6 +220,10 @@ body {
     display: block;
 }
 
+/* Десктопная картинка: показана, мобильная скрыта */
+.hero-img-desktop { display: block; }
+.hero-img-mobile  { display: none; }
+
 .hero-gradient-overlay {
     position: absolute;
     inset: 0;
@@ -468,6 +472,11 @@ body {
 
 /* Смартфоны (< 768px): фото без срезки */
 @media (max-width: 768px) {
+    /* Переключение картинок */
+    .hero-img-desktop { display: none !important; }
+    .hero-img-mobile  { display: block !important; }
+
+    /* Блок Hero адаптируется под картинку 3х4 */
     .hero-fullbleed {
         height: auto;
         min-height: 0;
@@ -475,15 +484,30 @@ body {
     }
 
     .hero-img-wrapper {
-        height: 46vh;
-        min-height: 240px;
-        max-height: 400px;
+        /* 3:4 = по высоте 133% от ширины экрана */
+        height: 0;
+        padding-bottom: 133.33%;
         background: #091e14;
+        position: relative;
+        overflow: hidden;
     }
 
-    .hero-fullbleed-img {
-        object-fit: contain;
-        object-position: center center;
+    .hero-img-wrapper .hero-fullbleed-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    .hero-img-wrapper .hero-gradient-overlay {
+        position: absolute;
+        inset: 0;
+    }
+
+    .hero-img-wrapper .hero-cta-box {
+        position: absolute;
     }
 
     .btn-neon-pill {
