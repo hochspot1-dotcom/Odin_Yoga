@@ -14,10 +14,16 @@
 </head>
 <body>
 
-    <!-- Навигационная панель с логотипом по центру и бургер-меню справа -->
+    <!-- Навигационная панель: Десктопный тонкий шрифт слева/справа + Мобильный бургер только для мобильных -->
     <header class="header">
         <div class="container header-container">
-            <!-- Логотип Odin Yoga по центру вверху -->
+            <!-- Левые десктопные ссылки -->
+            <nav class="nav-left desktop-nav" aria-label="Основная навигация">
+                <a href="#about" class="nav-link">О нас</a>
+                <a href="#schedule" class="nav-link">Расписание</a>
+            </nav>
+            
+            <!-- Логотип Odin Yoga -->
             <a href="#" class="logo" aria-label="Odin Yoga Главная">
                 <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                     <path d="M12 3c-1.5 2-4 3.5-7 3.5 0 5.5 3 10.5 7 12.5 4-2 7-7c0-5.5-3-7-7-7z"/>
@@ -25,16 +31,22 @@
                 </svg>
                 <span class="logo-text">Odin Yoga</span>
             </a>
+            
+            <!-- Правые десктопные ссылки -->
+            <nav class="nav-right desktop-nav" aria-label="Дополнительная навигация">
+                <a href="#benefits" class="nav-link">Преимущества</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+            </nav>
 
-            <!-- Кнопка Бургер Меню справа в углу -->
+            <!-- Кнопка Бургер-Меню (ТОЛЬКО для мобильных устройств) -->
             <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false">
                 <span class="burger-bar"></span>
                 <span class="burger-bar"></span>
                 <span class="burger-bar"></span>
             </button>
 
-            <!-- Выпадающее мобильное меню с ссылками -->
-            <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Основная навигация">
+            <!-- Выпадающее меню (ТОЛЬКО для мобильных устройств) -->
+            <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Мобильная навигация">
                 <a href="#about" class="nav-link">О нас</a>
                 <a href="#schedule" class="nav-link">Расписание</a>
                 <a href="#benefits" class="nav-link">Преимущества</a>
