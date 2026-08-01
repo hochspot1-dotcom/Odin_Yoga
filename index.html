@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEOWMASTE — Студия Йоги</title>
-    <meta name="description" content="Йога-студия MEOWMASTE: гармония, дыхание, укрепление тела и нервной системы.">
+    <title>Odin Yoga — Студия Йоги</title>
+    <meta name="description" content="Йога-студия Odin Yoga: гармония, дыхание, укрепление тела и нервной системы.">
     
     <!-- Google Fonts: Outfit (Display) + Montserrat (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,23 +14,29 @@
 </head>
 <body>
 
-    <!-- Навигационная панель поверх главного изображения -->
+    <!-- Навигационная панель с логотипом по центру и бургер-меню справа -->
     <header class="header">
         <div class="container header-container">
-            <nav class="nav-left" aria-label="Основная навигация">
-                <a href="#about" class="nav-link">О нас</a>
-                <a href="#schedule" class="nav-link">Расписание</a>
-            </nav>
-            
-            <a href="#" class="logo" aria-label="MEOWMASTE Главная">
+            <!-- Логотип Odin Yoga по центру вверху -->
+            <a href="#" class="logo" aria-label="Odin Yoga Главная">
                 <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                     <path d="M12 3c-1.5 2-4 3.5-7 3.5 0 5.5 3 10.5 7 12.5 4-2 7-7c0-5.5-3-7-7-7z"/>
                     <circle cx="12" cy="11" r="3"/>
                 </svg>
-                <span class="logo-text">MEOWMASTE</span>
+                <span class="logo-text">Odin Yoga</span>
             </a>
-            
-            <nav class="nav-right" aria-label="Дополнительная навигация">
+
+            <!-- Кнопка Бургер Меню справа в углу -->
+            <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false">
+                <span class="burger-bar"></span>
+                <span class="burger-bar"></span>
+                <span class="burger-bar"></span>
+            </button>
+
+            <!-- Выпадающее мобильное меню с ссылками -->
+            <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Основная навигация">
+                <a href="#about" class="nav-link">О нас</a>
+                <a href="#schedule" class="nav-link">Расписание</a>
                 <a href="#benefits" class="nav-link">Преимущества</a>
                 <a href="#contacts" class="nav-link">Контакты</a>
             </nav>
@@ -41,7 +47,7 @@
         <!-- Секция HERO: Фотография вписана по ширине полностью без срезки текста "YOGA" + Цитата под нижний край первого экрана -->
         <section class="hero-fullbleed" id="about">
             <div class="hero-img-wrapper">
-                <img src="images/hero_yoga_full.jpg" alt="MEOWMASTE Yoga" class="hero-fullbleed-img">
+                <img src="images/hero_yoga_full.jpg" alt="Odin Yoga" class="hero-fullbleed-img">
                 <div class="hero-gradient-overlay"></div>
                 
                 <!-- Овальная кнопка "Записаться" поверх изображения -->
@@ -50,7 +56,7 @@
                 </div>
             </div>
 
-            <!-- Вдохновляющая цитата прижата к нижнему краю первого экрана (Видна без скролла) -->
+            <!-- Вдохновляющая цитата прижата к нижнему краю первого экрана -->
             <div class="hero-quote-inline">
                 <div class="container">
                     <p class="hero-quote">
@@ -195,7 +201,7 @@
     <!-- Подвал -->
     <footer class="footer" id="contacts">
         <div class="container footer-container">
-            <p>© 2026 MEOWMASTE Yoga Studio. Все права защищены.</p>
+            <p>© 2026 Odin Yoga Studio. Все права защищены.</p>
         </div>
     </footer>
 
