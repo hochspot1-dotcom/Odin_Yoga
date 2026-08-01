@@ -129,34 +129,47 @@ body {
     flex-direction: column;
     gap: 0;
     position: absolute;
-    top: 76px;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: rgba(6, 18, 11, 0.97);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(52, 211, 153, 0.2);
-    padding: 8px 0;
+    /* Узкий вертикальный прямоугольник справа под бургером */
+    top: 68px;
+    right: 16px;
+    left: auto;
+    width: 200px;
+    /* Полупрозрачный glassmorphism */
+    background: rgba(6, 20, 13, 0.55);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    border-radius: 16px;
+    padding: 6px 0;
     z-index: 200;
-    /* Скрыто по умолчанию с анимацией */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 20px rgba(16, 185, 129, 0.12);
+    /* Анимация появления сверху вниз */
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-10px) scale(0.96);
+    transform-origin: top right;
     pointer-events: none;
     transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
 }
 
 .mobile-nav-drawer.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     pointer-events: auto;
 }
 
 .mobile-nav-drawer .nav-link {
     display: block;
-    padding: 14px 24px;
-    font-size: 0.95rem;
-    letter-spacing: 1.8px;
+    padding: 13px 22px;
+    font-size: 0.88rem;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.88);
     border-bottom: 1px solid rgba(52, 211, 153, 0.08);
+    transition: background 0.18s, color 0.18s;
+}
+
+.mobile-nav-drawer .nav-link:hover {
+    background: rgba(52, 211, 153, 0.1);
+    color: var(--accent-mint);
 }
 
 .mobile-nav-drawer .nav-link:last-child {
@@ -439,7 +452,7 @@ body {
 
     /* Выпадающее меню разрешено показываться */
     .mobile-nav-drawer {
-        display: flex;
+        display: flex; /* разрешаем показ — видимость управляется opacity/pointer-events */
     }
 
     /* Карточки в 2 колонки */
