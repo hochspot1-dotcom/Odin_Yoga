@@ -305,9 +305,9 @@ body {
 
 .hero-quote-inline {
     padding: 14px 0 16px;
-    background: #091e14;
+    background: linear-gradient(180deg, #091e14 0%, #071910 100%);
     text-align: center;
-    border-bottom: 1px solid rgba(52,211,153,.1);
+    border-bottom: none;
     flex-shrink: 0;
 }
 
@@ -323,20 +323,25 @@ body {
 }
 
 /* ==========================================================================
-   СЕКЦИИ И ОТСТУПЫ (Просторные интервалы на ПК)
+   СЕКЦИИ И БЕСШОВНЫЕ ГРАДИЕНТНЫЕ ПЕРЕХОДЫ
    ========================================================================== */
 .section {
     padding: 100px 0;
+    position: relative;
 }
 
+/* Секция "Выбор клиентов": бесшовный перелив из #071910 в #040d08 */
 .section-clients {
+    background: linear-gradient(180deg, #071910 0%, #05120c 50%, #040d08 100%);
     padding-top: 110px;
     padding-bottom: 90px;
 }
 
+/* Секция "Почему это полезно?": бесшовный перелив из #040d08 в глубокий черный #010403 */
 .section-benefits {
+    background: linear-gradient(180deg, #040d08 0%, #030805 50%, #010403 100%);
     padding-top: 90px;
-    padding-bottom: 110px;
+    padding-bottom: 120px;
 }
 
 .section-header {
@@ -628,23 +633,24 @@ body {
     .class-card { min-height: 320px; }
 }
 
-/* На всех мобильных экранах (< 640px): кружки расположены ВЕРТИКАЛЬНО в шахматном порядке (компактно) */
+/* На всех мобильных экранах (< 640px): Крупные переплетающиеся круги на всю ширину (по референсу) */
 @media (max-width: 640px) {
     .circles-overlapping-row {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 20px 0;
+        padding: 30px 0;
         margin: 0;
         overflow: visible;
+        width: 100%;
     }
 
     .benefit-ball {
-        width: 130px;
-        height: 130px;
+        width: clamp(165px, 46vw, 195px);
+        height: clamp(165px, 46vw, 195px);
         margin-left: 0 !important;
-        margin-top: -52px;
+        margin-top: -68px;
         flex-shrink: 0;
         opacity: 0;
     }
@@ -653,27 +659,37 @@ body {
         margin-top: 0 !important;
     }
 
-    /* Вертикальный шахматный порядок (зигзаг): нечетные влево, четные вправо (компактное смещение) */
+    /* Вертикальное шахматное расхождение во всю ширину экрана */
     .benefit-ball:nth-child(odd) {
-        transform: translateX(-40px) translateY(30px);
+        transform: translateX(-25%) translateY(40px);
     }
 
     .benefit-ball:nth-child(even) {
-        transform: translateX(40px) translateY(30px);
+        transform: translateX(25%) translateY(40px);
     }
 
     .benefit-ball.is-visible:nth-child(odd) {
         opacity: 1;
-        transform: translateX(-24px) translateY(0);
+        transform: translateX(-22%) translateY(0);
     }
 
     .benefit-ball.is-visible:nth-child(even) {
         opacity: 1;
-        transform: translateX(24px) translateY(0);
+        transform: translateX(22%) translateY(0);
     }
 
-    .ball-filled span { font-size: .78rem; line-height: 1.3; }
-    .ball-filled { padding: 12px; }
-    .ball-dark { padding: 16px; }
-    .neon-silh-icon { width: 48px; height: 48px; }
+    .ball-filled span {
+        font-size: clamp(.88rem, 3.8vw, 1.05rem);
+        line-height: 1.35;
+        font-weight: 500;
+    }
+
+    .ball-filled { padding: 18px; }
+    .ball-dark { padding: 20px; }
+    .neon-silh-icon { width: clamp(56px, 15vw, 68px); height: clamp(56px, 15vw, 68px); }
+
+    /* Отступы секций для мобильных */
+    .section { padding: 60px 0; }
+    .section-clients { padding-top: 65px; padding-bottom: 50px; }
+    .section-benefits { padding-top: 50px; padding-bottom: 70px; }
 }
