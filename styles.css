@@ -633,24 +633,28 @@ body {
     .class-card { min-height: 320px; }
 }
 
-/* На всех мобильных экранах (< 640px): Крупные переплетающиеся круги на всю ширину (по референсу) */
+/* На всех мобильных экранах (< 640px): Крупнейшие переплетающиеся круги строго по скриншоту референса */
 @media (max-width: 640px) {
+    .section-benefits {
+        overflow: hidden;
+    }
+
     .circles-overlapping-row {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 30px 0;
+        padding: 40px 0;
         margin: 0;
-        overflow: visible;
+        position: relative;
         width: 100%;
     }
 
     .benefit-ball {
-        width: clamp(165px, 46vw, 195px);
-        height: clamp(165px, 46vw, 195px);
+        width: clamp(210px, 60vw, 240px);
+        height: clamp(210px, 60vw, 240px);
         margin-left: 0 !important;
-        margin-top: -68px;
+        margin-top: -95px;
         flex-shrink: 0;
         opacity: 0;
     }
@@ -659,37 +663,58 @@ body {
         margin-top: 0 !important;
     }
 
-    /* Вертикальное шахматное расхождение во всю ширину экрана */
+    /* Зеленые круги с текстом (нечетные): слева, немного выходят за левый край экрана */
     .benefit-ball:nth-child(odd) {
-        transform: translateX(-25%) translateY(40px);
-    }
-
-    .benefit-ball:nth-child(even) {
-        transform: translateX(25%) translateY(40px);
+        transform: translateX(-32%) translateY(50px);
     }
 
     .benefit-ball.is-visible:nth-child(odd) {
         opacity: 1;
-        transform: translateX(-22%) translateY(0);
+        transform: translateX(-24%) translateY(0);
+    }
+
+    /* Темные полупрозрачные круги с иконками (четные): справа, уходят за правый край экрана как на скриншоте */
+    .benefit-ball:nth-child(even) {
+        transform: translateX(38%) translateY(50px);
     }
 
     .benefit-ball.is-visible:nth-child(even) {
         opacity: 1;
-        transform: translateX(22%) translateY(0);
+        transform: translateX(30%) translateY(0);
+    }
+
+    .ball-filled {
+        background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+        border: 2px solid rgba(255,255,255,.45);
+        box-shadow: 0 0 35px rgba(16,185,129,.6), inset 0 0 25px rgba(255,255,255,.3);
+        padding: 24px;
+        text-align: center;
     }
 
     .ball-filled span {
-        font-size: clamp(.88rem, 3.8vw, 1.05rem);
+        font-size: clamp(.95rem, 4.2vw, 1.12rem);
         line-height: 1.35;
-        font-weight: 500;
+        font-weight: 600;
+        color: #FFFFFF;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        display: block;
     }
 
-    .ball-filled { padding: 18px; }
-    .ball-dark { padding: 20px; }
-    .neon-silh-icon { width: clamp(56px, 15vw, 68px); height: clamp(56px, 15vw, 68px); }
+    .ball-dark {
+        background: rgba(6, 18, 11, 0.75);
+        backdrop-filter: blur(12px);
+        border: 1.8px solid rgba(52, 211, 153, 0.45);
+        box-shadow: 0 0 28px rgba(4,9,6,.9), inset 0 0 30px rgba(16,185,129,.25);
+        padding: 24px;
+    }
+
+    .neon-silh-icon {
+        width: clamp(62px, 16vw, 76px);
+        height: clamp(62px, 16vw, 76px);
+    }
 
     /* Отступы секций для мобильных */
-    .section { padding: 60px 0; }
-    .section-clients { padding-top: 65px; padding-bottom: 50px; }
-    .section-benefits { padding-top: 50px; padding-bottom: 70px; }
+    .section { padding: 50px 0; }
+    .section-clients { padding-top: 60px; padding-bottom: 40px; }
+    .section-benefits { padding-top: 40px; padding-bottom: 60px; }
 }
