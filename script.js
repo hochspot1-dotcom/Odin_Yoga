@@ -69,4 +69,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // 3. Анимация поочередного плавного появления карточек при скроллинге
+    const cards = document.querySelectorAll('.class-card');
+    
+    if (cards.length > 0) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -40px 0px',
+            threshold: 0.15
+        };
+
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach((card, index) => {
+            // Каждая карточка плавно появляется по очереди при скролле
+            card.style.transitionDelay = `${(index % 4) * 0.12}s`;
+            cardObserver.observe(card);
+        });
+    }
 });
