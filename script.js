@@ -70,29 +70,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Анимация поочередного плавного появления карточек при скроллинге
-    const cards = document.querySelectorAll('.class-card');
+    // 3. Анимация постоянного появления при скроллинге (ВВЕРХ и ВНИЗ) для карточек и кружков
+    const animElements = document.querySelectorAll('.class-card, .benefit-ball');
     
-    if (cards.length > 0) {
+    if (animElements.length > 0) {
         const observerOptions = {
             root: null,
-            rootMargin: '0px 0px -40px 0px',
-            threshold: 0.15
+            rootMargin: '0px 0px -30px 0px',
+            threshold: 0.12
         };
 
-        const cardObserver = new IntersectionObserver((entries) => {
+        const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    cardObserver.unobserve(entry.target);
+                } else {
+                    entry.target.classList.remove('is-visible');
                 }
             });
         }, observerOptions);
 
-        cards.forEach((card, index) => {
-            // Каждая карточка плавно появляется по очереди при скролле
-            card.style.transitionDelay = `${(index % 4) * 0.12}s`;
-            cardObserver.observe(card);
+        animElements.forEach((el, index) => {
+            if (el.classList.contains('class-card')) {
+                el.style.transitionDelay = `${(index % 4) * 0.14}s`;
+            } else if (el.classList.contains('benefit-ball')) {
+                el.style.transitionDelay = `${(index % 3) * 0.12}s`;
+            }
+            scrollObserver.observe(el);
         });
     }
 });

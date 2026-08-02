@@ -342,12 +342,12 @@ body {
     justify-content: space-between;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,.4);
-    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
-                opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
+    opacity: 0;
+    transform: translateY(50px) scale(0.94);
+    transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), 
                 border-color 0.28s var(--ease), 
                 box-shadow 0.28s var(--ease);
-    opacity: 0;
-    transform: translateY(40px) scale(0.96);
     will-change: opacity, transform;
 }
 
@@ -373,8 +373,8 @@ body {
     transition: var(--tr);
 }
 
-.class-card:hover { border-color: var(--accent-mint); box-shadow: 0 0 30px rgba(52,211,153,.32); transform: translateY(-5px); }
-.class-card.is-visible:hover { transform: translateY(-5px); }
+.class-card:hover { border-color: var(--accent-mint); box-shadow: 0 0 30px rgba(52,211,153,.32); }
+.class-card.is-visible:hover { transform: translateY(-5px) scale(1); }
 .class-card:hover .class-card-bg-img { transform: scale(1.06); }
 .class-card:hover .class-card-overlay { background: linear-gradient(180deg, rgba(52,211,153,.35) 0%, rgba(6,20,13,.6) 45%, rgba(4,9,6,.92) 100%); }
 
@@ -391,7 +391,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 45px 0;
+    padding: 55px 0;
     position: relative;
 }
 
@@ -402,27 +402,42 @@ body {
     text-align: center;
     margin-left: -30px;
     flex-shrink: 0;
-    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+    opacity: 0;
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.35s var(--ease), 
+                border-color 0.35s var(--ease);
     position: relative;
+    will-change: opacity, transform;
 }
 .benefit-ball:first-child { margin-left: 0; }
 
-/* Шахматное расхождение верх/низ как в Олимпийских кольцах */
+/* Десктоп: шахматное расхождение верх/низ как в Олимпийских кольцах */
 .benefit-ball:nth-child(odd) {
-    transform: translateY(-20px);
+    transform: translateY(-55px);
 }
 
 .benefit-ball:nth-child(even) {
-    transform: translateY(20px);
+    transform: translateY(55px);
 }
 
-.benefit-ball:nth-child(odd):hover {
-    transform: translateY(-20px) scale(1.08);
+.benefit-ball.is-visible:nth-child(odd) {
+    opacity: 1;
+    transform: translateY(-22px);
+}
+
+.benefit-ball.is-visible:nth-child(even) {
+    opacity: 1;
+    transform: translateY(22px);
+}
+
+.benefit-ball.is-visible:nth-child(odd):hover {
+    transform: translateY(-22px) scale(1.08);
     z-index: 10;
 }
 
-.benefit-ball:nth-child(even):hover {
-    transform: translateY(20px) scale(1.08);
+.benefit-ball.is-visible:nth-child(even):hover {
+    transform: translateY(22px) scale(1.08);
     z-index: 10;
 }
 
@@ -575,44 +590,50 @@ body {
     .class-card { min-height: 320px; }
 }
 
-/* На всех мобильных экранах (< 640px): кружки сохраняют расположение "Олимпийские кольца" со скроллом */
+/* На всех мобильных экранах (< 640px): кружки расположены ВЕРТИКАЛЬНО в шахматном порядке (зигзаг) */
 @media (max-width: 640px) {
     .circles-overlapping-row {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding: 40px 16px;
-        margin: 0 -16px;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .circles-overlapping-row::-webkit-scrollbar {
-        display: none;
+        justify-content: center;
+        padding: 40px 0;
+        margin: 0;
+        overflow: visible;
     }
 
     .benefit-ball {
-        width: 145px;
-        height: 145px;
-        margin-left: -22px !important;
-        margin-top: 0 !important;
+        width: 155px;
+        height: 155px;
+        margin-left: 0 !important;
+        margin-top: -30px;
         flex-shrink: 0;
+        opacity: 0;
     }
 
     .benefit-ball:first-child {
-        margin-left: 0 !important;
+        margin-top: 0 !important;
     }
 
+    /* Вертикальный шахматный порядок (зигзаг): нечетные влево, четные вправо */
     .benefit-ball:nth-child(odd) {
-        transform: translateY(-14px);
+        transform: translateX(-50px) translateY(40px);
     }
 
     .benefit-ball:nth-child(even) {
-        transform: translateY(14px);
+        transform: translateX(50px) translateY(40px);
     }
 
-    .ball-filled span { font-size: .8rem; }
-    .neon-silh-icon { width: 56px; height: 56px; }
+    .benefit-ball.is-visible:nth-child(odd) {
+        opacity: 1;
+        transform: translateX(-32px) translateY(0);
+    }
+
+    .benefit-ball.is-visible:nth-child(even) {
+        opacity: 1;
+        transform: translateX(32px) translateY(0);
+    }
+
+    .ball-filled span { font-size: .82rem; }
+    .neon-silh-icon { width: 58px; height: 58px; }
 }
