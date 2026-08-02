@@ -280,12 +280,14 @@ body {
     z-index: 10;
 }
 
-@keyframes btn-pulse {
+@keyframes btn-glow {
     0%, 100% {
-        box-shadow: 0 8px 30px rgba(16, 185, 129, 0.45), 0 0 0 0 rgba(52, 211, 153, 0.4);
+        box-shadow: 0 6px 25px rgba(16, 185, 129, 0.45);
+        border-color: rgba(255, 255, 255, 0.45);
     }
     50% {
-        box-shadow: 0 12px 38px rgba(16, 185, 129, 0.75), 0 0 0 14px rgba(52, 211, 153, 0);
+        box-shadow: 0 10px 38px rgba(52, 211, 153, 0.75);
+        border-color: rgba(255, 255, 255, 0.85);
     }
 }
 
@@ -300,18 +302,18 @@ body {
     border: 1.5px solid rgba(255, 255, 255, 0.45);
     border-radius: var(--radius-pill);
     cursor: pointer;
-    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+    box-shadow: 0 6px 25px rgba(16, 185, 129, 0.45);
     transition: var(--tr);
     white-space: nowrap;
-    animation: btn-pulse 3s infinite ease-in-out;
+    animation: btn-glow 3.5s infinite ease-in-out;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .btn-neon-pill:hover {
     background: linear-gradient(135deg, #34D399 0%, #10B981 50%, #059669 100%);
     border-color: #FFFFFF;
-    box-shadow: 0 12px 42px rgba(52, 211, 153, 0.8), inset 0 1px 3px rgba(255, 255, 255, 0.5);
-    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 42px rgba(52, 211, 153, 0.8);
+    transform: translateY(-2px);
 }
 
 .hero-quote-inline {
@@ -443,22 +445,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 55px 0;
+    padding: 75px 0;
     position: relative;
 }
 
 .benefit-ball {
-    width: 180px; height: 180px;
+    width: 230px; height: 230px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     text-align: center;
-    margin-left: -30px;
+    margin-left: -42px;
     flex-shrink: 0;
     opacity: 0;
-    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
-                box-shadow 0.35s var(--ease), 
-                border-color 0.35s var(--ease);
+    transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     will-change: opacity, transform;
 }
@@ -466,50 +466,45 @@ body {
 
 /* Десктоп: шахматное расхождение верх/низ как в Олимпийских кольцах */
 .benefit-ball:nth-child(odd) {
-    transform: translateY(-55px);
+    transform: translateY(-65px);
 }
 
 .benefit-ball:nth-child(even) {
-    transform: translateY(55px);
+    transform: translateY(65px);
 }
 
 .benefit-ball.is-visible:nth-child(odd) {
     opacity: 1;
-    transform: translateY(-22px);
-}
-
-.benefit-ball.is-visible:nth-child(odd) {
-    opacity: 1;
-    transform: translateY(-55px);
+    transform: translateY(-65px);
 }
 
 .benefit-ball.is-visible:nth-child(even) {
     opacity: 1;
-    transform: translateY(55px);
+    transform: translateY(65px);
 }
 
 .ball-filled {
     background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-    border: 1.5px solid rgba(255,255,255,.4);
-    box-shadow: 0 0 30px rgba(16,185,129,.5), inset 0 0 18px rgba(255,255,255,.25);
+    border: 2px solid rgba(255,255,255,.45);
+    box-shadow: 0 0 38px rgba(16,185,129,.55), inset 0 0 25px rgba(255,255,255,.28);
     z-index: 3;
-    padding: 20px;
+    padding: 28px;
 }
-.ball-filled span { font-size: .98rem; font-weight: 500; color: #fff; line-height: 1.35; }
+.ball-filled span { font-size: 1.15rem; font-weight: 600; color: #fff; line-height: 1.35; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
 
 .ball-dark {
     background: #06120b;
-    border: 1.5px solid rgba(52,211,153,.38);
-    box-shadow: 0 0 22px rgba(4,9,6,.85), inset 0 0 25px rgba(16,185,129,.2);
+    border: 2px solid rgba(52,211,153,.45);
+    box-shadow: 0 0 30px rgba(4,9,6,.9), inset 0 0 30px rgba(16,185,129,.25);
     z-index: 2;
-    padding: 24px;
+    padding: 28px;
 }
 
 .neon-silh-icon {
-    width: 76px;
-    height: 76px;
+    width: 96px;
+    height: 96px;
     object-fit: contain;
-    filter: drop-shadow(0 0 10px #34D399) drop-shadow(0 0 4px #10B981);
+    filter: drop-shadow(0 0 12px #34D399) drop-shadow(0 0 5px #10B981);
 }
 
 /* ==========================================================================
