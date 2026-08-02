@@ -26,6 +26,37 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* ==========================================================================
+   МИНИМАЛИСТИЧНЫЙ КАСТОМНЫЙ СКРОЛЛБАР
+   ========================================================================== */
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(52, 211, 153, 0.4) #030805;
+}
+
+/* Chrome, Safari, Edge, Opera */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #030805;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(52, 211, 153, 0.35);
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(52, 211, 153, 0.15);
+    transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-mint);
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.6);
+}
+
 body {
     background: linear-gradient(180deg, #0a2216 0%, #071910 20%, #05110b 45%, #030705 75%, #000000 100%);
     color: var(--text-primary);

@@ -10,12 +10,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..700;1,300..700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=4.0">
+    <link rel="stylesheet" href="styles.css?v=5.0">
     <style>
         /* КРИТИЧЕСКИЕ СТИЛИ — первый экран строго 100% высоты на любом устройстве */
         html, body {
             overflow-x: hidden;
         }
+        /* Минималистичный кастомный скроллбар */
+        * { scrollbar-width: thin; scrollbar-color: rgba(52, 211, 153, 0.4) #030805; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #030805; }
+        ::-webkit-scrollbar-thumb { background: rgba(52, 211, 153, 0.35); border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #34D399; }
+
         .hero-fullbleed {
             width: 100% !important;
             height: 100vh !important;
