@@ -280,40 +280,35 @@ body {
     z-index: 10;
 }
 
-@keyframes btn-glow {
-    0%, 100% {
-        box-shadow: 0 6px 25px rgba(16, 185, 129, 0.45);
-        border-color: rgba(255, 255, 255, 0.45);
-    }
-    50% {
-        box-shadow: 0 10px 38px rgba(52, 211, 153, 0.75);
-        border-color: rgba(255, 255, 255, 0.85);
-    }
-}
-
 .btn-neon-pill {
-    background: linear-gradient(135deg, #10B981 0%, #059669 60%, #047857 100%);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.28) 0%, rgba(5, 150, 105, 0.2) 100%);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     color: #FFFFFF;
     font-family: var(--font-body);
-    font-size: 1.15rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 500;
     letter-spacing: 0.5px;
-    padding: 16px 54px;
-    border: 1.5px solid rgba(255, 255, 255, 0.45);
-    border-radius: var(--radius-pill);
+    padding: 16px 50px;
+    border: 1.5px solid rgba(52, 211, 153, 0.45);
+    border-radius: 16px;
     cursor: pointer;
-    box-shadow: 0 6px 25px rgba(16, 185, 129, 0.45);
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.18);
     transition: var(--tr);
     white-space: nowrap;
-    animation: btn-glow 3.5s infinite ease-in-out;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    animation: none;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .btn-neon-pill:hover {
-    background: linear-gradient(135deg, #34D399 0%, #10B981 50%, #059669 100%);
-    border-color: #FFFFFF;
-    box-shadow: 0 12px 42px rgba(52, 211, 153, 0.8);
-    transform: translateY(-2px);
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.48) 0%, rgba(16, 185, 129, 0.38) 100%);
+    border-color: rgba(52, 211, 153, 0.85);
+    box-shadow: 0 8px 28px rgba(52, 211, 153, 0.35);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.btn-neon-pill:active {
+    transform: translateY(0) scale(0.98);
 }
 
 .hero-quote-inline {
@@ -620,8 +615,9 @@ body {
 /* Смартфоны (< 768px) */
 @media (max-width: 768px) {
     .btn-neon-pill {
-        padding: 13px 38px;
-        font-size: 1.02rem;
+        padding: 13px 36px;
+        font-size: 0.98rem;
+        border-radius: 14px;
     }
 
     .section { padding: 60px 0; }
