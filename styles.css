@@ -628,23 +628,23 @@ body {
     .class-card { min-height: 320px; }
 }
 
-/* На всех мобильных экранах (< 640px): кружки расположены ВЕРТИКАЛЬНО в шахматном порядке (зигзаг) */
+/* На всех мобильных экранах (< 640px): кружки расположены ВЕРТИКАЛЬНО в шахматном порядке (компактно) */
 @media (max-width: 640px) {
     .circles-overlapping-row {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 40px 0;
+        padding: 20px 0;
         margin: 0;
         overflow: visible;
     }
 
     .benefit-ball {
-        width: 155px;
-        height: 155px;
+        width: 130px;
+        height: 130px;
         margin-left: 0 !important;
-        margin-top: -30px;
+        margin-top: -52px;
         flex-shrink: 0;
         opacity: 0;
     }
@@ -653,25 +653,27 @@ body {
         margin-top: 0 !important;
     }
 
-    /* Вертикальный шахматный порядок (зигзаг): нечетные влево, четные вправо */
+    /* Вертикальный шахматный порядок (зигзаг): нечетные влево, четные вправо (компактное смещение) */
     .benefit-ball:nth-child(odd) {
-        transform: translateX(-50px) translateY(40px);
+        transform: translateX(-40px) translateY(30px);
     }
 
     .benefit-ball:nth-child(even) {
-        transform: translateX(50px) translateY(40px);
+        transform: translateX(40px) translateY(30px);
     }
 
     .benefit-ball.is-visible:nth-child(odd) {
         opacity: 1;
-        transform: translateX(-32px) translateY(0);
+        transform: translateX(-24px) translateY(0);
     }
 
     .benefit-ball.is-visible:nth-child(even) {
         opacity: 1;
-        transform: translateX(32px) translateY(0);
+        transform: translateX(24px) translateY(0);
     }
 
-    .ball-filled span { font-size: .82rem; }
-    .neon-silh-icon { width: 58px; height: 58px; }
+    .ball-filled span { font-size: .78rem; line-height: 1.3; }
+    .ball-filled { padding: 12px; }
+    .ball-dark { padding: 16px; }
+    .neon-silh-icon { width: 48px; height: 48px; }
 }
