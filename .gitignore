@@ -1,0 +1,12 @@
+# Temporary python scripts
+process_*.py
+create_*.py
+update_*.py
+fit_*.py
+__pycache__/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
