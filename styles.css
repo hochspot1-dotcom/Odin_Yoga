@@ -323,6 +323,41 @@ body {
 }
 
 /* ==========================================================================
+   СЕКЦИИ И ОТСТУПЫ (Просторные интервалы на ПК)
+   ========================================================================== */
+.section {
+    padding: 100px 0;
+}
+
+.section-clients {
+    padding-top: 110px;
+    padding-bottom: 90px;
+}
+
+.section-benefits {
+    padding-top: 90px;
+    padding-bottom: 110px;
+}
+
+.section-header {
+    margin-bottom: 48px;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
    КАРТОЧКИ — Анимация появления при скролле
    ========================================================================== */
 .cards-grid {
@@ -579,8 +614,11 @@ body {
         font-size: .9rem;
     }
 
-    .section { padding: 32px 0; }
-    .section-title { font-size: 1.35rem; }
+    .section { padding: 60px 0; }
+    .section-clients { padding-top: 65px; padding-bottom: 45px; }
+    .section-benefits { padding-top: 45px; padding-bottom: 65px; }
+    .section-header { margin-bottom: 28px; }
+    .section-title { font-size: 1.4rem; }
 
     .cards-grid {
         grid-template-columns: 1fr;
